@@ -500,14 +500,9 @@ namespace Internal.IL
                 AddTypeReference(returnType, true);
             }
             var owningType = methodCodeNodeNeedingCode.Method.OwningType;
-            if (methodCodeNodeNeedingCode.Method.IsNativeCallable || methodCodeNodeNeedingCode.Method.IsRuntimeExport || methodCodeNodeNeedingCode.Method.IsRuntimeImplemented)
-            {
-                AddTypeReference(owningType, true);
-            }
-            if (methodCodeNodeNeedingCode.Method.Signature.IsStatic)
-            {
-                AddTypeReference(owningType, true);
-            }
+
+            AddTypeReference(owningType, true);
+
             ImportBasicBlocks();
 
             if (_sequencePoints != null && _sequencePoints[0].Document != null)
@@ -946,9 +941,7 @@ namespace Internal.IL
                     if (!method.IsNewSlot)
                         throw new NotImplementedException();
 
-                    // TODO: Interface calls
                     if (method.OwningType.IsInterface)
-                        //throw new NotImplementedException();
                         callViaInterfaceDispatch = true;
 
                     else
