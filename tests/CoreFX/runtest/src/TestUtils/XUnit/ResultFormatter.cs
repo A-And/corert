@@ -23,12 +23,15 @@ namespace CoreFX.TestUtils.XUnit
     {
         private static string logDir;
         private static string logPattern;
+        private static string outDir;
 
         public static void Main(string[] args)
         {
             ArgumentSyntax syntax = ParseCommandLine(args);
             IEnumerable<string> logFiles = DiscoverLogs(logDir, logPattern);
-            PrintTotals(logFiles);
+            TestListGenerator generator = new TestListGenerator();
+            generator.GenerateFromXML(logFiles, outDir);
+            //PrintTotals(logFiles);
         }
 
         private static void PrintTotals(IEnumerable<string> logFiles)
@@ -113,6 +116,8 @@ namespace CoreFX.TestUtils.XUnit
             {
                 syntax.DefineOption("log|logDirectory|logDir", ref logDir, "Path to directory of xml test results");
                 syntax.DefineOption("pattern|p", ref logPattern, "Pattern of XUnit log filenames for which to search");
+                syntax.DefineOption("outDir|out", ref outDir, "Output of JSON test list generation");
+
             });
 
             return argSyntax;
