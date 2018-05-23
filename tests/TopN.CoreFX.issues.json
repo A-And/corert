@@ -1886,8 +1886,41 @@
         "name": "System.Threading.Tasks.Tests",
         "exclusions": {
             "namespaces": null,
-            "classes": null,
+            "classes": [
+                {
+                    "name": "System.Threading.Tasks.Tests.FromAsync.TaskFromAsyncTests",
+                    "reason": "Access Violation on Linux and OSX"
+                }
+            ],
             "methods": [
+                {
+                    "name": "TaskCoverage.Coverage.FromAsync",
+                    "reason": "Not supported in CoreRT"
+                },
+                {
+                    "name": "System.Threading.Tasks.Tests.FromAsync.TaskFromAsyncTests.TaskFromAsyncTest7",
+                    "reason": "Access Violation"
+                },
+                {
+                    "name": "System.Threading.Tasks.Tests.FromAsync.TaskFromAsyncTests.TaskFromAsyncTest10",
+                    "reason": "Access Violation"
+                },
+                {
+                    "name": "System.Threading.Tasks.Tests.FromAsync.TaskFromAsyncTests.TaskFromAsyncTest25",
+                    "reason": "Access Violation"
+                },
+                {
+                    "name": "System.Threading.Tasks.Tests.FromAsync.TaskFromAsyncTests.TaskFromAsyncTest62",
+                    "reason": "Access Violation"
+                },
+                {
+                    "name": "System.Threading.Tasks.Tests.FromAsync.TaskFromAsyncTests.TaskFromAsyncTest7",
+                    "reason": "Access Violation"
+                },
+                {
+                    "name": "System.Threading.Tasks.Tests.TaskFactory_FromAsyncTests.RunAPMFactoryTests",
+                    "reason": "Access Violation"
+                },
                 {
                     "name": "System.Threading.Tasks.Tests.TaskRtTests.RunFromResult_FaultedTask",
                     "reason": "Xunit.Sdk.NotNullException"
